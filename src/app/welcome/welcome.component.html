@@ -32,10 +32,10 @@
 
     <div class="name col-md-4 my-3">
         <label> <b>Enter your name to start the Quiz: </b></label>
-        <input type="text" class="form-control" placeholder="Enter your name here...">
+        <input #name type="text" class="form-control" placeholder="Enter your name here...">
     </div>
     <div class="container">
-        <button class="btn btn-primary btn-lg" routerLink="/question">Start the Quiz..!!</button>
+        <button class="btn btn-primary btn-lg" routerLink="/question" (click)="startQuiz()">Start the Quiz..!!</button>
     </div>
 
 </div>
