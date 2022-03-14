@@ -13,7 +13,7 @@ export class QuestionComponent implements OnInit {
   public currentQuestion:number =0;
   public points:number =0;
   counter=60;
-  
+
   constructor(private questionService : QuestionService) { }
 
   ngOnInit(): void {
@@ -27,6 +27,15 @@ export class QuestionComponent implements OnInit {
       //console.log(res.questions);
       this.questionList = res.questions;
     })
+
+  }
+
+  nextQuestion(){
+    this.currentQuestion++;
+  }
+
+  previousQuestion(){
+    this.currentQuestion--;
 
   }
 
