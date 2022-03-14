@@ -38,32 +38,18 @@
         </div>
         <div class="question">
             <div class="card">
-                <h6>{{questionList[currentQuestion]?.questionText}}</h6>
+                <h6 style="color:#ff3d00;"><b>{{questionList[currentQuestion]?.questionText}}</b></h6>
             </div>
 
         </div>
-        <div class="option">
-            <ol>
+        <div class="options">
+            <ol *ngFor ="let option of questionList[currentQuestion]?.options">
                 <li>
                     <div class="card">
-                        Suraj Singh
+                        {{option.text}}
                     </div>
                 </li>
-                <li>
-                    <div class="card">
-                        Anita Kumari
-                    </div>
-                </li>
-                <li>
-                    <div class="card">
-                        Arjun Singh
-                    </div>
-                </li>
-                <li>
-                    <div class="card">
-                        Rupa Singh
-                    </div>
-                </li>
+                
             </ol>
 
         </div>
