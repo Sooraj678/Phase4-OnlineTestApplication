@@ -32,7 +32,7 @@
 
         </div>
         <div class="progress mb-3">
-            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%"
+            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [ngStyle]="{'width':progress+'%'}"
                 aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
             </div>
         </div>
@@ -57,7 +57,7 @@
         <div class="d-flex justify-content-between">
             <button [disabled] ="currentQuestion===0" class="btn" (click)="previousQuestion()"><i class="fa text-primary fa-chevron-left fa-2x" aria-hidden="true"></i></button>
             <button class="btn" (click)="resetQuiz()"><i class="fa fa-refresh text-primary fa-2x" aria-hidden="true"></i></button>
-            <button [disabled] ="currentQuestion===questionList.length-1"class="btn" (click)="nextQuestion()"><i class="fa text-primary fa-chevron-right fa-2x" aria-hidden="true"></i></button>
+            <button class="btn" (click)="nextQuestion()"><i class="fa text-primary fa-chevron-right fa-2x" aria-hidden="true"></i></button>
         </div>
     </div>
 </div>
