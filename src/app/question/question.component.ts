@@ -16,8 +16,8 @@ export class QuestionComponent implements OnInit {
   counter = 60;
   correctAnswer: number = 0;
   inCorrectAnswer: number = 0;
-  interval$:any;
-  progress:string="0";
+  interval$: any;
+  progress: string = "0";
 
   constructor(private questionService: QuestionService) { }
 
@@ -49,63 +49,70 @@ export class QuestionComponent implements OnInit {
 
     if (option.correct) {
 
-       //this.points = this.points+10;
+      //this.points = this.points+10;
       this.points += 10;
       this.correctAnswer++;
-      this.currentQuestion++;
-      this.resetCounter();
-      this.getProgressPercent();
-      
+      setTimeout(() => {
+        this.currentQuestion++;
+        this.resetCounter();
+        this.getProgressPercent();
+      }, 1000);
+
+
     } else {
-      this.currentQuestion++;
+
+      setTimeout(() => {
+        this.currentQuestion++;
       this.inCorrectAnswer++;
       this.resetCounter();
       this.getProgressPercent();
+      }, 1000);
+
       this.points -= 10;
     }
 
   }
 
-  startCounter(){
+  startCounter() {
     this.interval$ = interval(1000)
-    .subscribe(val=>{
-      this.counter--;
-      if(this.counter===0){
-        this.currentQuestion++;
-        this.counter=60;
-        this.points-=10;
+      .subscribe(val => {
+        this.counter--;
+        if (this.counter === 0) {
+          this.currentQuestion++;
+          this.counter = 60;
+          this.points -= 10;
 
-      }
-    });
+        }
+      });
     setTimeout(() => {
       this.interval$.unsubscribe();
-    },600000);
+    }, 600000);
 
   }
 
-  stopCounter(){
+  stopCounter() {
     this.interval$.unsubscribe();
     this.counter = 0;
 
   }
 
-  resetCounter(){
+  resetCounter() {
     this.stopCounter();
-    this.counter=60;
+    this.counter = 60;
     this.startCounter();
   }
 
-  resetQuiz(){
+  resetQuiz() {
     this.resetCounter();
     this.getAllQuestions();
-    this.points=0;
-    this.counter=60;
+    this.points = 0;
+    this.counter = 60;
     this.currentQuestion = 0;
-    this.progress="0";
+    this.progress = "0";
   }
 
-  getProgressPercent(){
-    this.progress = ((this.currentQuestion/this.questionList.length)*100).toString();
+  getProgressPercent() {
+    this.progress = ((this.currentQuestion / this.questionList.length) * 100).toString();
     return this.progress;
   }
 
